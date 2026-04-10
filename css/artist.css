@@ -1,0 +1,610 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Archivo Black", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+    margin-top: 7vw;
+    transition: top 0.3s ease;
+
+}
+
+/* ฟอนต์หัวข้อ */
+.about-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* ฟอนต์ข้อความ */
+.about-desc {
+    font-family: 'Mitr', sans-serif;
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #000;
+}
+
+
+/* NAV */
+
+nav.hide {
+    top: -7vw;
+}
+
+nav {
+    height: 7vw;
+    background: linear-gradient(125deg, black, rgb(17, 17, 17));
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    transition: top 0.4s ease-in-out;
+}
+
+.nav-con {
+    max-width: 95vw;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    align-items: center;
+}
+
+.dieout-img {
+    width: 12.5vw;
+    object-fit: contain;
+}
+
+.menu ul{
+    display: flex;
+    list-style: none;
+    margin-right: 1rem;
+    
+    li {
+        margin: 0 1rem;
+
+        a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.25rem;
+        }
+    }
+}
+
+
+/* NAV */
+
+nav.hide {
+    top: -7vw;
+}
+
+nav {
+    height: 7vw;
+    background: linear-gradient(125deg, black, rgb(17, 17, 17));
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    transition: top 0.4s ease-in-out, background 0.5s ease; /* ลื่นเวลาซ่อน/เปลี่ยนสี */
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+}
+
+
+
+/* ตัวอย่างขวา */
+.nav-right a {
+    text-decoration: none;
+    color: #eee; /* ฟ้อนต์สว่างบนพื้นดำ */
+    font-size: 1rem;
+    margin-right: 2rem;
+    background: #222; /* ดำเข้ม */
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    border: 2px solid #555; /* ขอบสีเทาเข้ม */
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* hover → ขยาย, เงา, glow */
+.nav-right a:hover {
+    color: #fff;
+    transform: scale(1.05);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.3), 0 4px 8px rgba(0,0,0,0.5);
+    background: #333; /* พื้นหลังสว่างขึ้นเล็กน้อย */
+}
+
+/* pseudo-element สำหรับเส้นขอบเล็กขยับ */
+.nav-right a::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: 2px solid #888; /* ขอบ glow เทาอ่อน */
+    border-radius: 8px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+    z-index: -1;
+}
+
+.nav-right a:hover::before {
+    transform: scaleX(1);
+}
+
+.nav-con {
+    max-width: 95vw;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    align-items: center;
+}
+
+.dieout-img {
+    width: 12.5vw;
+    object-fit: contain;
+}
+
+.menu ul{
+    display: flex;
+    list-style: none;
+    margin-right: 1rem;   
+       
+}
+
+.menu li {
+    margin: 0 1rem;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.25rem;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+
+/* CONTAINER */
+
+.container {
+    max-width: 60vw;
+    margin: 0 auto; 
+    display: flex;
+    justify-content: center;
+}
+
+/* ABOUT */
+
+
+.about {
+    margin: 9rem 0 0 0;
+    color: black;
+    
+}
+
+.about-con {
+    padding: 3rem;
+    width: 90vw;
+    margin: 0 auto;
+    display: flex;
+
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+    
+}
+
+
+
+.saran {
+    
+    width: 23vw;
+    object-fit: contain;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    border-radius: 5px;
+}
+
+.about-text {
+    width: 40vw;
+    height: auto;
+}
+
+.about-img {
+    margin-left: 5rem;
+}
+
+.about-text h1 {
+    margin-bottom: 1rem;
+    font-size: 3rem;
+}
+
+/* NEW */
+
+.news {
+    margin-top: 4rem;
+    text-align: center;
+    padding: 5rem 0;
+    background: #0d0d0d; /* ดำเข้ม */
+}
+
+.news-text {
+    padding-bottom: 5rem;
+}
+
+.news-text h2 {
+    font-size: 4rem;
+    position: relative;
+    display: inline-block;
+    color: #f5f5f5; /* ขาวนวล */
+}
+/* เส้นบน */
+.news-text h2::before {
+    content: "";
+    display: block;
+    width: 1280px; /* 👈 ไม่ยาวเต็มจอ */
+    height: 3px;
+    background: #444;
+    margin: 0 auto 3rem;
+}
+
+.news-text h2::after {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    width: 60px;
+    height: 8px;
+    background: linear-gradient(to right, #888888, #ffffff); /* gradient ขาว → เทาเข้ม */
+}
+
+.news-img {
+    width: 27vw;
+    object-fit: contain;
+    filter: brightness(0.9) contrast(1.1); /* ทำให้ภาพดูเท่ขึ้น */
+}
+
+.news-table {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    color: #eaeaea;
+}
+
+.news-box {
+    background: linear-gradient(145deg, #111, #1a1a1a); /* ไล่ดำ */
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.8);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+
+
+.news-info {
+    padding: 1rem;
+}
+
+.news-info h2 {
+    font-size: 2.5rem;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
+
+.news-info p {
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    color: #bbbbbb;
+}
+
+.news-contact {
+    display: flex;
+    justify-content: right;
+    padding: 1rem;
+    font-size: 2rem;
+}
+
+.news-contact ul {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+}
+
+.news-contact a {
+    color: #888;
+}
+
+/* ไอคอน */
+.news-contact ul li a i {                
+    transition: transform 0.3s, color 0.3s, text-shadow 0.3s;
+}
+
+/* hover */
+.news-contact ul li a i:hover {
+    transform: scale(1.3) rotate(-10deg) translateY(-5px);
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255,255,255,0.6);
+}
+
+/* CONTACT */
+
+.contact {
+    border-top: 3px solid black;
+    padding-top: 4.5rem;
+    border-bottom: 3px solid black;
+    margin: 4rem 2.7rem 0 2.7rem; /* ด้านบนเว้น 4rem */
+}
+
+
+.contact-con {
+    display: flex;
+    justify-content: space-between;
+    max-width: 60vw;
+    margin: 0 auto;
+
+    padding-bottom: 5rem;
+}
+
+
+.contact-text {
+    font-size: 1.3rem;
+}
+
+.contact-logo ul {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+}
+
+.contact-logo a {
+    color: black;
+    font-size: 1.5rem;
+}
+
+.contact ul li a i {            
+    color: black;                      /* สีเริ่มต้นขาว */
+    transition: transform 0.3s, color 0.3s, text-shadow 0.3s;
+    /* ทำให้ scale, color และ glow ลื่น */
+}
+
+/* hover → ลูกเล่นเต็ม */
+.contact ul li a i:hover {
+    transform: scale(1.3) rotate(-10deg) translateY(-5px); 
+    /* ขยาย 1.3 เท่า, หมุน -10 องศา, ยกขึ้น 5px */
+    color: #bbbbbb; 
+    text-shadow: 0 0 8px rgba(187, 187, 187, 0.6); 
+    /* glow สีเทาอ่อนเล็กน้อย */
+}
+
+/* FOOTER */
+
+footer {
+    width: 100%;
+    background-color: #111;
+    color: white;
+    box-sizing: border-box;
+}
+
+/* Footer container: 3 columns เท่ากัน */
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 4rem;
+    align-items: stretch; /* ทำให้คอลัมน์สูงเท่ากัน */
+    padding: 2rem 5vw;
+    gap: 2rem;
+}
+
+.footer-container > div {
+    flex: 1;               /* ให้แต่ละคอลัมน์ขยายเต็ม */
+    margin-bottom: 1rem;
+}
+
+.footer-container h3 {
+    margin-bottom: 1rem;
+}
+
+.footer-contact p {
+    padding: 0.2rem 0;
+    font-size: 0.9rem;
+}
+
+/* Social icons */
+.footer-social ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-social ul li {
+    list-style: none;
+}
+
+.footer-social a i {
+    font-size: 1.5rem;
+    color: white;
+    transition: transform 0.3s, color 0.3s, text-shadow 0.3s;
+}
+
+.footer-social a i:hover {
+    transform: scale(1.3) rotate(-10deg) translateY(-5px);
+    color: #bbbbbb;
+    text-shadow: 0 0 8px rgba(187, 187, 187, 0.6);
+}
+
+/* Footer bottom */
+.footer-bottom {
+    text-align: center;
+    padding: 1rem 5vw;
+    font-size: 0.9rem;
+    border-top: 1px solid #333;
+}
+
+
+/* =========================
+   MOBILE RESPONSIVE <=768px
+   ========================= */
+@media (max-width: 768px) {
+
+    /* -------------------------
+       ABOUT SECTION
+    ------------------------- */
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-con {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        width: 100vw;
+    }
+
+    .about-text {
+        width: 90%;
+        margin: 0 0 2rem 0;
+        text-align: center;
+        order: 2;
+    }
+
+    .about-text h1 {
+        margin-top: 2rem;
+        font-size: 2rem;
+    }
+
+    .about-desc {
+        font-size: 1rem;
+        line-height: 1.5;
+        width: 100%; /* กว้างเต็ม */
+        max-width: 25rem; /* ไม่ให้ยาวเกิน */
+        margin: 0 auto;
+    }
+
+    /* แก้ไขตรง About Image */
+    .about-img {
+        order: 1;
+        width: 60%;      /* ให้ container กว้างเต็ม */
+        margin: 0;
+    }
+
+    .about-img img {
+        width: 100%;      /* ให้รูปเต็ม container */
+        max-width: none;  /* ยกเลิกข้อจำกัด */
+        height: 100%;     /* รักษาสัดส่วน */
+        display: block;
+        object-fit: cover; 
+        box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+        border-radius: 8px;
+        margin: 0 auto;
+    }
+
+    /* ===============================
+       NEWS SECTION
+       =============================== */
+    .news-table {
+        grid-template-columns: 1fr; /* 1 card ต่อแถว */
+        gap: 1rem;
+        width: 50vw;
+        margin: 0 auto;
+    }
+
+    .news-text h2 {
+        font-size: 2.5rem;
+    }
+
+    .news-box {
+        margin: 1rem 0;
+    }
+
+    .news-img {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .news-info h2 {
+        font-size: 1.8rem;
+    }
+
+    .news-info p {
+        font-size: 0.8rem;
+    }
+
+    .news-contact {
+        justify-content: center;
+    }
+
+    /* -------------------------
+       CONTACT SECTION
+    ------------------------- */
+    .contact-con {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 2rem 1rem;
+    }
+
+    .contact-text {
+        font-size: 1.1rem;
+        text-align: center;
+    }
+
+    .contact-logo ul {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .contact-logo a {
+        font-size: 1.5rem;
+    }
+
+    /* -------------------------
+       FOOTER
+    ------------------------- */
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+        padding: 2rem 5vw;
+    }
+
+    .footer-container > div {
+        flex: 1 1 100%;
+    }
+
+    .footer-social ul {
+        justify-content: center;
+    }
+
+    .footer-bottom {
+        font-size: 0.85rem;
+        padding: 0.8rem 5vw;
+    }
+}
+
