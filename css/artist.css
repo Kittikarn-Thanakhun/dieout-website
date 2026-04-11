@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -37,12 +41,8 @@ body {
 
 /* NAV */
 
-nav.hide {
-    top: -7vw;
-}
-
 nav {
-    height: 7vw;
+    height: 70px;
     background: linear-gradient(125deg, black, rgb(17, 17, 17));
 
     position: fixed;
@@ -65,7 +65,8 @@ nav {
 }
 
 .dieout-img {
-    width: 12.5vw;
+    height: 70px;
+    width: auto;
     object-fit: contain;
 }
 
@@ -88,22 +89,7 @@ nav {
 
 /* NAV */
 
-nav.hide {
-    top: -7vw;
-}
 
-nav {
-    height: 7vw;
-    background: linear-gradient(125deg, black, rgb(17, 17, 17));
-
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-
-    transition: top 0.4s ease-in-out, background 0.5s ease; /* ลื่นเวลาซ่อน/เปลี่ยนสี */
-}
 
 .nav-left, .nav-right {
     display: flex;
@@ -163,10 +149,7 @@ nav {
     align-items: center;
 }
 
-.dieout-img {
-    width: 12.5vw;
-    object-fit: contain;
-}
+
 
 .menu ul{
     display: flex;
@@ -191,13 +174,18 @@ nav {
 /* CONTAINER */
 
 .container {
-    max-width: 60vw;
     margin: 0 auto; 
     display: flex;
     justify-content: center;
 }
 
 /* ABOUT */
+
+
+.about-desc {
+    max-width: 55ch;
+    margin: 0 auto;
+}
 
 
 .about {
@@ -228,8 +216,8 @@ nav {
 }
 
 .about-text {
-    width: 40vw;
-    height: auto;
+    width: 100%;
+    max-width: 650px;
 }
 
 .about-img {
@@ -244,7 +232,6 @@ nav {
 /* NEW */
 
 .news {
-    margin-top: 4rem;
     text-align: center;
     padding: 5rem 0;
     background: #0d0d0d; /* ดำเข้ม */
@@ -299,8 +286,6 @@ nav {
     box-shadow: 0 15px 30px rgba(0,0,0,0.8);
     transition: transform 0.3s, box-shadow 0.3s;
 }
-
-
 
 .news-info {
     padding: 1rem;
@@ -470,6 +455,16 @@ footer {
    ========================= */
 @media (max-width: 768px) {
 
+    .nav {
+    height: 60px;
+    }
+
+    .nav-right a {
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+        margin-right: 1rem;
+    }   
+
     /* -------------------------
        ABOUT SECTION
     ------------------------- */
@@ -529,7 +524,7 @@ footer {
     .news-table {
         grid-template-columns: 1fr; /* 1 card ต่อแถว */
         gap: 1rem;
-        width: 50vw;
+        width: 93%;
         margin: 0 auto;
     }
 
@@ -543,7 +538,7 @@ footer {
 
     .news-img {
         width: 100%;
-        max-width: 500px;
+        max-width: 300px;
         height: auto;
         margin: 0 auto;
     }
@@ -553,7 +548,7 @@ footer {
     }
 
     .news-info p {
-        font-size: 0.8rem;
+        font-size: 1rem;
     }
 
     .news-contact {
