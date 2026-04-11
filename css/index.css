@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+html, body {
+    overflow-x: hidden;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -20,17 +24,17 @@ body {
     font-weight: 400;
     font-style: normal;
 
-    margin-top: 7vw;
+    margin-top: 70px;
     transition: top 0.3s ease;
 
 }
 
 section {
-    scroll-margin-top: 7vw; /* เว้นระยะจาก top เพื่อไม่ให้ navbar บัง */
+    scroll-margin-top: 70px; /* เว้นระยะจาก top เพื่อไม่ให้ navbar บัง */
 }
 
 #about, #members, #news {
-    scroll-margin-top: 7vw;
+    scroll-margin-top: 70px;
 }
 
 
@@ -53,15 +57,13 @@ section {
 
 /* NAV */
 
-nav.hide {
-    top: -7vw;
-}
+
 
 nav {
-    height: 7vw;
+    height: 70px;
     background: linear-gradient(125deg, black, rgb(17, 17, 17));
 
-    position: sticky;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -81,8 +83,8 @@ nav {
 }
 
 .dieout-img {
-    width: 12.5vw;
-    object-fit: contain;
+    height: 70px;
+    width: auto;
 }
 
 .menu ul li {
@@ -95,34 +97,12 @@ nav {
 }
 
 
-/* NAV */
-
-.dieout-img {
-    width: 12.5vw;
-    object-fit: contain;
-}
-
 .nav-left {
     display: flex;
     align-items: center;
 }
 
-nav.hide {
-    top: -7vw;
-}
 
-nav {
-    height: 7vw;
-    background: linear-gradient(125deg, black, rgb(17, 17, 17));
-
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-
-    transition: top 0.4s ease-in-out, background 0.5s ease; /* ลื่นเวลาซ่อน/เปลี่ยนสี */
-}
 
 
 /* เมนูทั่วไป */
@@ -247,7 +227,8 @@ nav {
 /* HEADER */
 /* ทำให้ header เต็มหน้าจอ */
 .header {
-    width: 98.9vw;      /* เต็มความกว้างหน้าจอ */
+    max-width: 100%;
+    width: 100%;      /* เต็มความกว้างหน้าจอ */
     height: 70vh;     /* เต็มความสูงหน้าจอ */
     overflow: hidden;  /* ตัดส่วนเกินของรูป */
     position: relative;
@@ -338,7 +319,7 @@ nav {
 
 .about-con {
     padding: 3rem;
-    width: 87vw;
+    width: 80vw;
     margin: 0 auto;
     display: flex;
 
@@ -402,7 +383,7 @@ nav {
 }
 
 .members-con {
-    width: 1250px;
+    width: 93%;
     border-top: 3px solid #444;
     padding: 3rem 0;
     border-bottom: 3px solid #444;
@@ -700,7 +681,7 @@ nav {
 .news-text h2::before {
     content: "";
     display: block;
-    width: 1250px; /* 👈 ไม่ยาวเต็มจอ */
+    width: 1280px; /* 👈 ไม่ยาวเต็มจอ */
     height: 3px;
     background: #444;
     margin: 0 auto 3rem;
@@ -735,8 +716,6 @@ nav {
     box-shadow: 0 15px 30px rgba(0,0,0,0.8);
     transition: transform 0.3s, box-shadow 0.3s;
 }
-
-
 
 .news-info {
     padding: 1rem;
@@ -936,6 +915,13 @@ footer {
     .menu .menu-ul.active {
         max-height: 1000px;      /* ⭐ กำหนดให้สูงพอจะใส่ทั้งหมด */
     }
+
+    /* HEADER */
+
+    .header {
+        height: 45vh; /* ลดลงให้พอดีมือถือ */
+    }
+
 }
 
 @media (max-width: 768px) {
@@ -948,7 +934,7 @@ footer {
     .mixer .container {
         grid-template-columns: repeat(2, 1fr); /* 2 คอลัมน์ */
         gap: 1rem;
-        width: 90vw;
+        width: 100%;
         margin: 0 auto;
     }
 
@@ -967,8 +953,7 @@ footer {
     .artist-img,
     .producer-img,
     .mixer-img {
-        height: auto;
-        max-height: 250px;
+        height: 130px;
         object-fit: cover;
     }
 
@@ -990,6 +975,24 @@ footer {
     .producer-text h3::before,
     .mixer-text h3::before {
         width: 80%; /* ปรับความยาวเส้นด้านบน */
+    }
+
+    /* CONTACT */
+
+    .contact {
+        height: auto;
+        padding: 2rem 1rem;
+    }
+
+    .contact ul {
+        flex-wrap: wrap;          /* 🔥 ให้มันขึ้นบรรทัดใหม่ */
+        justify-content: center;
+        gap: 1.2rem;
+    }
+
+    .contact ul li a i {
+        font-size: 2rem;          /* 🔥 ลดขนาด */
+        padding: 0;
     }
 
     /* ===============================
@@ -1052,7 +1055,7 @@ footer {
     .news-table {
         grid-template-columns: 1fr; /* 1 card ต่อแถว */
         gap: 1rem;
-        width: 50vw;
+        width: 93%;
         margin: 0 auto;
     }
 
