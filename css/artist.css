@@ -230,6 +230,9 @@ nav {
 }
 
 /* NEW */
+.news {
+    overflow-x: hidden;
+}
 
 .news {
     text-align: center;
@@ -251,7 +254,7 @@ nav {
 .news-text h2::before {
     content: "";
     display: block;
-    width: 1280px; /* 👈 ไม่ยาวเต็มจอ */
+    width: 90vw;
     height: 3px;
     background: #444;
     margin: 0 auto 3rem;
