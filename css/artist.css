@@ -189,6 +189,7 @@ nav {
 
 
 .about {
+    overflow-x: hidden;
     margin: 9rem 0 4rem 0;
     color: black;
     
@@ -561,21 +562,33 @@ footer {
     /* -------------------------
        CONTACT SECTION
     ------------------------- */
+    .contact {
+        margin: 2rem 1rem 0 1rem;
+    }
+
     .contact-con {
-        flex-direction: column;
+        max-width: 100%;
+        padding: 1rem;
+    }
+
+    .contact-con {
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
-        gap: 1.5rem;
-        padding: 2rem 1rem;
+        flex-wrap: wrap; /* 🔥 ให้ตกบรรทัดได้ถ้าจอแคบ */
+        gap: 0.5rem;
     }
 
     .contact-text {
-        font-size: 1.1rem;
-        text-align: center;
+        font-size: 1rem;
+        white-space: nowrap; /* ไม่ให้ขึ้น 2 บรรทัด */
     }
 
     .contact-logo ul {
-        justify-content: center;
-        flex-wrap: wrap;
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap; /* 🔥 สำคัญ */
+        justify-content: flex-end;
     }
 
     .contact-logo a {
