@@ -578,6 +578,10 @@ footer {
         align-items: center;
         flex-wrap: wrap; /* 🔥 ให้ตกบรรทัดได้ถ้าจอแคบ */
         gap: 1.5rem;
+
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
     }
 
     .contact-text {
@@ -585,11 +589,16 @@ footer {
         white-space: nowrap; /* ไม่ให้ขึ้น 2 บรรทัด */
     }
 
+    .contact-logo {
+        display: flex;
+        justify-content: center;
+    }
+
     .contact-logo ul {
         display: flex;
         gap: 1rem;
         flex-wrap: wrap; /* 🔥 สำคัญ */
-        justify-content: flex-end;
+        justify-content: center;
     }
 
     .contact-logo a {
