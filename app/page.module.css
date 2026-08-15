@@ -1,0 +1,339 @@
+/* สไตล์เฉพาะหน้าแรก: HEADER, CONTACT, ABOUT, MEMBERS และ grid การ์ดศิลปิน */
+
+/* ===============================
+   HEADER
+   =============================== */
+
+.header {
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 6rem;
+  text-align: center;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+  margin: 0;
+}
+
+/* ===============================
+   CONTACT (แถบไอคอน social ของค่าย)
+   =============================== */
+
+/* FIX: เดิม height:17vh ตายตัว + padding 4rem + ไอคอนมี padding:3rem 0 อีกชั้น
+   รวมแล้วเนื้อหาสูงเกินกล่องจนล้น -> ใช้ min-height แล้วตัด padding ที่ตัวไอคอนทิ้ง */
+.contact {
+  background: var(--bg-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 17vh;
+  padding: 3rem 4rem;
+}
+
+.contact ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.contact ul li a i {
+  font-size: 3rem;
+  color: #ffffff;
+  transition: transform 0.3s, color 0.3s, text-shadow 0.3s;
+}
+
+.contact ul li a i:hover {
+  transform: scale(1.3) rotate(-10deg) translateY(-5px);
+  color: #bbbbbb;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* ===============================
+   ABOUT
+   =============================== */
+
+.about {
+  margin: 4rem 0 0 0;
+  color: black;
+  overflow-x: hidden;
+}
+
+.aboutCon {
+  padding: 3rem;
+  width: 80vw;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
+}
+
+/* FIX: เดิม .about-text width:40vw + รูป 23vw + margin 5rem + padding 6rem
+   รวมกันเกิน 80vw ของ .about-con ตอนจอกลาง -> เปลี่ยนมาใช้ flex ยืดหยุ่นแทน */
+.aboutText {
+  flex: 1 1 55%;
+  margin-right: 5rem;
+}
+
+.aboutTitle {
+  font-family: var(--font-archivo), sans-serif;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.aboutDesc {
+  font-family: var(--font-mitr), sans-serif;
+  font-weight: 400;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #000;
+}
+
+.aboutImg {
+  flex: 0 0 auto;
+}
+
+.aboutImg img {
+  width: min(23vw, 380px);
+  object-fit: contain;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+}
+
+/* ===============================
+   MEMBERS
+   =============================== */
+
+.members {
+  background: var(--bg-dark);
+  margin-top: 4rem;
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.membersCon {
+  width: 93%;
+  margin: 0 auto;
+  border-top: 3px solid #444;
+  border-bottom: 3px solid #444;
+  padding: 3rem 0;
+}
+
+.membersCon p {
+  color: #eeeeee;
+  font-size: 2.5rem;
+}
+
+/* ===============================
+   GRID: ARTIST / PRODUCER / MIXER
+   FIX: เดิมมี CSS 3 ชุด (.artist-* / .producer-* / .mixer-*) เกือบเหมือนกันหมด
+   แต่ HTML ของ MIXER กับการ์ด BAX ใน PRODUCER กลับใช้ class .artist-view
+   ทำให้ .mixer-* ตายสนิท -> ยุบเหลือชุดเดียว
+   =============================== */
+
+.section {
+  padding: 0 0 3rem 0;
+}
+
+.sectionLight {
+  background-color: white;
+}
+
+.sectionDark {
+  background: var(--bg-dark);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 87vw;
+  margin: 0 auto;
+}
+
+.heading {
+  grid-column: 1 / -1;
+  padding: 4rem 0 0 0;
+}
+
+.heading h3 {
+  margin: 0 0 2rem;
+  font-size: 4rem;
+  text-align: center;
+  position: relative;
+}
+
+/* FIX: เส้นบนหัวข้อเดิม hardcode width:1250px -> จอแคบกว่านั้นเส้นล้นออกนอกจอ
+   แล้วโดน overflow-x:hidden ตัดทิ้ง เส้นเลยดูเบี้ยวไม่อยู่กลาง */
+.heading h3::before {
+  content: '';
+  display: block;
+  width: min(var(--line-max), 100%);
+  height: 3px;
+  margin: 0 auto 3rem;
+}
+
+.heading h3::after {
+  content: '';
+  display: block;
+  margin: 10px auto 0;
+  width: 60px;
+  height: 8px;
+  background: linear-gradient(to right, #888888, #ffffff);
+}
+
+.headingLight h3 {
+  color: black;
+}
+
+.headingLight h3::before {
+  background: black;
+}
+
+.headingDark h3 {
+  color: #ffffff;
+}
+
+.headingDark h3::before {
+  background: #444;
+}
+
+/* การ์ดศิลปินเองอยู่ใน components/ArtistCard.module.css */
+
+/* ===============================
+   RESPONSIVE
+   =============================== */
+
+/* FIX: เดิมกระโดดจาก 4 คอลัมน์ -> 2 ทันที ช่วง tablet เลยโล่งผิดปกติ */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .heading h3 {
+    font-size: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 4rem;
+  }
+
+  .aboutCon {
+    width: 90vw;
+    padding: 2rem;
+  }
+
+  .aboutText {
+    margin-right: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    height: 45vh;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  .contact {
+    min-height: 0;
+    padding: 2rem 1rem;
+  }
+
+  .contact ul {
+    gap: 1.2rem;
+  }
+
+  .contact ul li a i {
+    font-size: 2rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    width: 93vw;
+  }
+
+  .heading {
+    padding: 2rem 0 1rem 0;
+  }
+
+  .heading h3 {
+    font-size: 2.5rem;
+  }
+
+  .heading h3::before {
+    width: 80%;
+  }
+
+  .aboutCon {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    width: 100vw;
+  }
+
+  .aboutText {
+    flex: 1 1 auto;
+    width: 90%;
+    margin: 0 0 2rem 0;
+    text-align: center;
+    order: 2;
+  }
+
+  .aboutTitle {
+    margin-top: 2rem;
+    font-size: 2rem;
+  }
+
+  .aboutDesc {
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width: 25rem;
+    margin: 0 auto;
+  }
+
+  .aboutImg {
+    order: 1;
+    width: 60%;
+  }
+
+  .aboutImg img {
+    width: 100%;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .membersCon p {
+    font-size: 1.8rem;
+  }
+}

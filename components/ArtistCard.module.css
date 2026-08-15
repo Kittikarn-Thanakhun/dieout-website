@@ -1,0 +1,63 @@
+/* การ์ดศิลปิน — ชุดเดียวใช้ทั้ง grid ARTIST / PRODUCER / MIXER
+   FIX: ของเดิมมี CSS 3 ชุด (.artist-view / .producer-view / .mixer-view) ที่เกือบเหมือนกัน
+   แต่ HTML ของ MIXER และการ์ด BAX ใน PRODUCER กลับใช้ class .artist-view
+   ทำให้ .mixer-* ไม่เคยถูกใช้เลย */
+
+.card {
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.3s, filter 0.3s;
+  background: var(--card-bg);
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.card:hover {
+  transform: scale(1.06);
+  filter: brightness(0.7);
+}
+
+/* FIX: เดิม height:17vw ตายตัว -> จอกว้างมาก ๆ การ์ดยืดสูงผิดสัดส่วน
+   4/3 คือสัดส่วนเดิมตอนแสดง 4 คอลัมน์พอดี */
+.cardImg {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: top;
+  /* FIX: เดิมประกาศ border-radius ซ้ำสองบรรทัด อันหลัง (10px) ทับอันแรก
+     ทำให้มุมล่างของรูปมนอยู่กลางการ์ด */
+  border-radius: 10px 10px 0 0;
+  transition: transform 0.3s, filter 0.3s;
+  display: block;
+}
+
+.card:hover .cardImg {
+  filter: brightness(0.75);
+  transform: scale(1.02);
+}
+
+.cardLabel {
+  padding: 1rem;
+  color: #f1f1f1;
+  transition: color 0.3s ease;
+  margin: 0;
+}
+
+.card:hover .cardLabel {
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .cardImg {
+    aspect-ratio: 1 / 1;
+  }
+
+  .cardLabel {
+    font-size: 1rem;
+    padding: 0.5rem 0.8rem;
+    text-align: center;
+  }
+}

@@ -1,0 +1,552 @@
+/* © 2025 SEASLATT Dev */
+/* ส่วนที่ใช้ร่วมกันทุกหน้า: reset, nav, footer, section NEWS, animation */
+
+:root {
+  /* FIX: เดิม index.css ใช้ margin-top:70px แต่ artist.css ใช้ margin-top:7vw
+     ชดเชย navbar ที่สูง 70px คงที่ -> จอแคบ 7vw < 70px เนื้อหาเลยมุดใต้ nav
+     ตอนนี้ทุกที่อ้างค่าเดียวกันหมด */
+  --nav-h: 70px;
+  /* ความยาวสูงสุดของเส้นคาดหัวข้อ (เดิม hardcode 1250px/1280px/90vw) */
+  --line-max: 1250px;
+  --bg-dark: #0d0d0d;
+  --card-bg: linear-gradient(145deg, #111, #1a1a1a);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  font-family: var(--font-archivo), sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  /* ใช้ padding แทน margin กัน margin-collapse กับ section แรก */
+  padding-top: var(--nav-h);
+}
+
+section {
+  scroll-margin-top: var(--nav-h);
+}
+
+/* ===============================
+   ANIMATION
+   =============================== */
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* FIX: เดิม HTML ใส่ class delay-1/2/3 ไว้แต่ CSS ไม่เคยนิยาม
+   ส่วน .fade-up:nth-child() ที่นิยามไว้ก็ยิงผิดตัว (นับลูกทุกตัวของ parent) */
+.delay-1 {
+  transition-delay: 0.1s;
+}
+.delay-2 {
+  transition-delay: 0.25s;
+}
+.delay-3 {
+  transition-delay: 0.4s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ===============================
+   NAV
+   =============================== */
+
+nav {
+  height: var(--nav-h);
+  background: linear-gradient(125deg, black, rgb(17, 17, 17));
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.nav-con {
+  max-width: 95vw;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  align-items: center;
+  position: relative;
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+.dieout-img {
+  height: var(--nav-h);
+  width: auto;
+  object-fit: contain;
+}
+
+.menu-ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2px;
+  align-items: center;
+}
+
+.menu-ul li {
+  margin: 0 1rem;
+}
+
+.menu-ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 0.9rem;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.menu-ul li a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #bbbbbb;
+  transition: 0.3s ease all;
+}
+
+.menu-ul li a:hover::after {
+  width: 100%;
+}
+
+.menu-ul li a:hover {
+  color: #bbbbbb;
+  text-shadow: 0 0 4px rgba(187, 187, 187, 0.5);
+}
+
+/* ปุ่ม NEW บน navbar + ปุ่ม BACK ในหน้าศิลปิน ใช้หน้าตาเดียวกัน */
+.menu-ul li.nav-new a,
+.nav-right a {
+  font-size: 1rem;
+  padding: 0.8rem 1.5rem;
+  background: #222;
+  color: #eee;
+  border-radius: 8px;
+  border: 2px solid #555;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.nav-right a {
+  margin-right: 2rem;
+}
+
+.menu-ul li.nav-new a::after {
+  display: none;
+}
+
+.menu-ul li.nav-new a:hover,
+.nav-right a:hover {
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.3), 0 4px 8px rgba(0, 0, 0, 0.5);
+  background: #333;
+}
+
+.menu-ul li.nav-new a::before,
+.nav-right a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #888;
+  border-radius: 8px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+.menu-ul li.nav-new a:hover::before,
+.nav-right a:hover::before {
+  transform: scaleX(1);
+}
+
+/* HAMBURGER */
+
+.navbar-toggle {
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+  padding: 10px;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+/* ===============================
+   CONTAINER
+   =============================== */
+
+.container {
+  max-width: 87vw;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ===============================
+   NEWS (ใช้ทั้งหน้าแรกและหน้าศิลปิน)
+   =============================== */
+
+.news {
+  overflow-x: hidden;
+  text-align: center;
+  padding: 5rem 0;
+  background: var(--bg-dark);
+}
+
+/* ตัวคุมความกว้างของ section NEWS (เดิมใช้ .container ซ้อน .news-con สองชั้น) */
+.news-con {
+  width: 87vw;
+  margin: 0 auto;
+}
+
+.news-text {
+  padding-bottom: 5rem;
+}
+
+/* FIX: เดิมเส้นนี้เป็น .news-text h2::before { width: 1280px }
+   แต่ h2 เป็น inline-block เส้นเลยดันความกว้าง h2 ให้เกินจอ
+   ย้ายมาไว้ที่ .news-text (block) แล้วคุมด้วย min() แทน */
+.news-text::before {
+  content: '';
+  display: block;
+  width: min(var(--line-max), 92%);
+  height: 3px;
+  background: #444;
+  margin: 0 auto 3rem;
+}
+
+.news-text h2 {
+  font-size: 4rem;
+  position: relative;
+  display: inline-block;
+  color: #f5f5f5;
+}
+
+.news-text h2::after {
+  content: '';
+  display: block;
+  margin: 0 auto;
+  width: 60px;
+  height: 8px;
+  background: linear-gradient(to right, #888888, #ffffff);
+}
+
+.news-table {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  color: #eaeaea;
+}
+
+.news-box {
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+/* FIX: เดิม class "news-img" ถูกใส่ทั้ง <div> แม่และ <img> ลูก
+   ทำให้ width:27vw ซ้อนกันสองชั้น แยกเป็นคนละ class ให้ชัด */
+.news-img-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.news-img {
+  width: 100%;
+  max-width: 27vw;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8px;
+  filter: brightness(0.9) contrast(1.1);
+}
+
+.news-info {
+  padding: 1rem;
+  flex: 1;
+}
+
+.news-info h2 {
+  font-size: 2.5rem;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.news-info p {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  color: #bbbbbb;
+}
+
+.news-contact {
+  display: flex;
+  justify-content: right;
+  padding: 1rem;
+  font-size: 2rem;
+}
+
+.news-contact ul {
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+}
+
+.news-contact a {
+  color: #888;
+}
+
+.news-contact ul li a i {
+  transition: transform 0.3s, color 0.3s, text-shadow 0.3s;
+}
+
+.news-contact ul li a i:hover {
+  transform: scale(1.3) rotate(-10deg) translateY(-5px);
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+/* ===============================
+   FOOTER
+   =============================== */
+
+footer {
+  border-top: #eee solid 2px;
+  width: 100%;
+  background-color: #111;
+  color: white;
+  box-sizing: border-box;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: stretch;
+  padding: 2rem 5vw;
+  gap: 2rem;
+}
+
+.footer-container > div {
+  flex: 1;
+  min-width: 15rem;
+  margin-bottom: 1rem;
+}
+
+.footer-container h3 {
+  margin-bottom: 1rem;
+}
+
+.footer-about p,
+.footer-contact p {
+  font-family: var(--font-mitr), sans-serif;
+}
+
+.footer-contact p {
+  padding: 0.2rem 0;
+  font-size: 0.9rem;
+}
+
+.footer-social ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-social ul li {
+  list-style: none;
+}
+
+.footer-social a i {
+  font-size: 1.5rem;
+  color: white;
+  transition: transform 0.3s, color 0.3s, text-shadow 0.3s;
+}
+
+.footer-social a i:hover {
+  transform: scale(1.3) rotate(-10deg) translateY(-5px);
+  color: #bbbbbb;
+  text-shadow: 0 0 8px rgba(187, 187, 187, 0.6);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 1rem 5vw;
+  font-size: 0.9rem;
+  border-top: 1px solid #333;
+}
+
+/* ===============================
+   RESPONSIVE
+   =============================== */
+
+@media (max-width: 768px) {
+  .menu-ul {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    /* FIX: เดิมเขียน gap: 1.7 !important ไม่มีหน่วย browser ทิ้งทั้งบรรทัด */
+    gap: 1.7rem;
+    position: fixed;
+    height: 100vh;
+    width: 250px;
+    top: 0;
+    right: 0;
+    padding: 5rem 1.5rem;
+    background-color: rgb(17, 17, 17);
+    transition: 0.5s ease;
+  }
+
+  .menu-ul.active {
+    display: flex;
+  }
+
+  .menu-ul li {
+    margin: 0;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+
+  .navbar-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navbar-toggle.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .navbar-toggle.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .nav-right a {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
+  }
+
+  /* NEWS */
+  .news-table {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 93%;
+    margin: 0 auto;
+  }
+
+  .news-text h2 {
+    font-size: 2.5rem;
+  }
+
+  .news-box {
+    margin: 1rem 0;
+  }
+
+  .news-img {
+    max-width: 300px;
+  }
+
+  .news-info h2 {
+    font-size: 1.8rem;
+  }
+
+  .news-info p {
+    font-size: 1rem;
+  }
+
+  .news-contact {
+    justify-content: center;
+  }
+
+  /* FOOTER */
+  .footer-container {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .footer-container > div {
+    flex: 1 1 100%;
+  }
+
+  .footer-social ul {
+    justify-content: center;
+  }
+
+  .footer-bottom {
+    font-size: 0.85rem;
+    padding: 0.8rem 5vw;
+  }
+}
