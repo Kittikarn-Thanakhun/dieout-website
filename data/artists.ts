@@ -194,7 +194,7 @@ export const artists: Artist[] = [
     socials: [
       { kind: 'youtube', url: 'https://www.youtube.com/channel/UC2qzws4CFEmo8e1rSZ0Ovew' },
       { kind: 'instagram', url: 'https://www.instagram.com/thisisthebests/' },
-      { kind: 'tiktok', url: 'hthttps://www.tiktok.com/@thisisthebests_' },
+      { kind: 'tiktok', url: 'https://www.tiktok.com/@thisisthebests_' },
       { kind: 'facebook', url: 'https://www.facebook.com/p/The-BESTS-100088319576382/' },
       { kind: 'spotify', url: 'https://open.spotify.com/artist/6e8TDjcAEEGD0yhbhKocWE' },
       { kind: 'itunes', url: 'https://music.apple.com/th/artist/the-bests/1553883707' },
@@ -670,7 +670,7 @@ export const artists: Artist[] = [
       links: [
         { kind: 'youtube', url: 'https://www.youtube.com/watch?v=cx3_s-6m6QA&list=RDcx3_s-6m6QA&start_radio=1&pp=ygUPc2ltb24geW91ciBsb3ZloAcB' },
         { kind: 'spotify', url: 'https://open.spotify.com/album/0C9YaoD5PgqqkmsKLiQfkH' },
-        { kind: 'itunes', url: 'hhttps://music.apple.com/au/album/your-love-single/1856854458' },
+        { kind: 'itunes', url: 'https://music.apple.com/au/album/your-love-single/1856854458' },
       ],
     },
     {

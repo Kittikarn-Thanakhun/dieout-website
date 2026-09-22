@@ -15,8 +15,8 @@ export default function Footer() {
         </div>
 
         <div className="footer-contact">
-          <h3>Deverloper Contact</h3>
-          <p>Intragram: seaslatt_dev</p>
+          <h3>Developer Contact</h3>
+          <p>Instagram: seaslatt_dev</p>
           <p>email: kittikarnforwork08@gmail.com</p>
         </div>
 
