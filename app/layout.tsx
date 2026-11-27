@@ -27,7 +27,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="th" className={`${archivo.variable} ${mitr.variable}`}>
+    <html
+      lang="th"
+      className={`${archivo.variable} ${mitr.variable}`}
+      data-scroll-behavior="smooth"
+    >
       <head>
         <link
           rel="stylesheet"

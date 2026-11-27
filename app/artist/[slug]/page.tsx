@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Nav from '@/components/Nav';
+import FadeUp from '@/components/FadeUp';
 import NewsCard from '@/components/NewsCard';
 import SocialList from '@/components/SocialList';
 import { artists, getArtist } from '@/data/artists';
@@ -36,18 +37,18 @@ export default async function ArtistPage({ params }: Params) {
       {/* ABOUT */}
       <section className={styles.about}>
         <div className={styles.aboutCon}>
-          <div className={styles.aboutText}>
+          <FadeUp className={styles.aboutText}>
             <h1>{artist.name}</h1>
             {artist.bio.map((paragraph, i) => (
               <p key={i} className={styles.aboutDesc}>
                 {paragraph}
               </p>
             ))}
-          </div>
-          <div className={styles.aboutImg}>
+          </FadeUp>
+          <FadeUp className={styles.aboutImg}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={artist.image} alt={artist.name} />
-          </div>
+          </FadeUp>
         </div>
       </section>
 
@@ -59,7 +60,9 @@ export default async function ArtistPage({ params }: Params) {
           </div>
           <div className="news-table">
             {artist.tracks.map((track) => (
-              <NewsCard key={track.title} track={track} />
+              <FadeUp key={track.title}>
+                <NewsCard track={track} />
+              </FadeUp>
             ))}
           </div>
         </div>
