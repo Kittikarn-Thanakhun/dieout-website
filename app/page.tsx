@@ -38,76 +38,86 @@ export default function Home() {
       </section>
 
       {/* ABOUT */}
-      <FadeUp as="section" id="about" className={styles.about}>
+      <section id="about" className={styles.about}>
         <div className={styles.aboutCon}>
-          <FadeUp className={styles.aboutText} delay={2}>
+          <FadeUp className={styles.aboutText}>
             <h1 className={styles.aboutTitle}>DIEOUT</h1>
             <p className={styles.aboutDesc}>{aboutText}</p>
           </FadeUp>
-          <FadeUp className={styles.aboutImg} delay={1}>
+          <FadeUp className={styles.aboutImg}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/img/all-dieout.jpg" alt="สมาชิกวง DIEOUT" />
           </FadeUp>
         </div>
-      </FadeUp>
+      </section>
 
       {/* MEMBERS */}
-      <FadeUp as="section" id="members" className={styles.members}>
+      <section id="members" className={styles.members}>
         <div className={styles.membersCon}>
-          <p>MEMBERS</p>
+          <FadeUp>
+            <p>MEMBERS</p>
+          </FadeUp>
         </div>
-      </FadeUp>
+      </section>
 
       {/* ARTIST */}
-      <FadeUp as="section" id="artist" className={`${styles.section} ${styles.sectionLight}`}>
+      <section id="artist" className={`${styles.section} ${styles.sectionLight}`}>
         <div className={styles.grid}>
-          <FadeUp className={`${styles.heading} ${styles.headingLight}`} delay={3}>
+          <FadeUp className={`${styles.heading} ${styles.headingLight}`}>
             <h3>ARTIST</h3>
           </FadeUp>
           {artists.map((artist) => (
-            <ArtistCard key={artist.slug} artist={artist} />
+            <FadeUp key={artist.slug}>
+              <ArtistCard artist={artist} />
+            </FadeUp>
           ))}
         </div>
-      </FadeUp>
+      </section>
 
       {/* PRODUCER */}
-      <FadeUp as="section" id="producer" className={`${styles.section} ${styles.sectionDark}`}>
+      <section id="producer" className={`${styles.section} ${styles.sectionDark}`}>
         <div className={styles.grid}>
-          <FadeUp className={`${styles.heading} ${styles.headingDark}`} delay={3}>
+          <FadeUp className={`${styles.heading} ${styles.headingDark}`}>
             <h3>PRODUCER</h3>
           </FadeUp>
           {bySlugs(producerGrid).map((artist) => (
-            <ArtistCard key={artist.slug} artist={artist} />
+            <FadeUp key={artist.slug}>
+              <ArtistCard artist={artist} />
+            </FadeUp>
           ))}
         </div>
-      </FadeUp>
+      </section>
 
       {/* MIXER */}
-      <FadeUp as="section" id="mixer" className={`${styles.section} ${styles.sectionLight}`}>
+      <section id="mixer" className={`${styles.section} ${styles.sectionLight}`}>
         <div className={styles.grid}>
-          <FadeUp className={`${styles.heading} ${styles.headingLight}`} delay={3}>
+          <FadeUp className={`${styles.heading} ${styles.headingLight}`}>
             {/* FIX: ของเดิมเขียนว่า "MIXER >" มีเครื่องหมาย > เกินมา */}
             <h3>MIXER</h3>
           </FadeUp>
           {bySlugs(mixerGrid).map((artist) => (
-            <ArtistCard key={artist.slug} artist={artist} />
+            <FadeUp key={artist.slug}>
+              <ArtistCard artist={artist} />
+            </FadeUp>
           ))}
         </div>
-      </FadeUp>
+      </section>
 
       {/* NEWS */}
-      <FadeUp as="section" id="news" className="news">
+      <section id="news" className="news">
         <div className="news-con">
-          <FadeUp className="news-text" delay={3}>
+          <FadeUp className="news-text">
             <h2>NEWS</h2>
           </FadeUp>
           <div className="news-table">
             {homeNews.map((track) => (
-              <NewsCard key={track.title} track={track} />
+              <FadeUp key={track.title}>
+                <NewsCard track={track} />
+              </FadeUp>
             ))}
           </div>
         </div>
-      </FadeUp>
+      </section>
     </>
   );
 }
